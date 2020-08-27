@@ -7,7 +7,7 @@
                 <b>{{ username }}</b> 
             </div>
             <div class="image">
-                <img :src="avatarImg">
+                <img :src="apis.data.message[i]">
             </div>
             <div class="content">
                 <span class="right floated">
@@ -24,19 +24,28 @@
                 </div>
             </div>
         </div>
+
+        {{ apis.data.message }}
     </div>
     
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
     name: 'GridImages',
     data: function() {
         return {
             avatarImg: 'https://avatars0.githubusercontent.com/u/3336816?s=460&u=a3def04c56afd7220d835005dbf1879a0b497554&v=4',
-
-            usernames: ['AdaBrain', 'Peter Parker', 'Steve Jobs', 'Bill Gates', 'Elon Musk']
+            usernames: ['AdaBrain', 'Peter Parker', 'Steve Jobs', 'Bill Gates', 'Elon Musk'],
+            apis: null
         }
+    },
+    mounted: function() {
+        axios
+        .get('https://dog.ceo/api/breed/pomeranian/images/random/10')
+        .then(response => this.apis = response)
     }
 }
 </script>
