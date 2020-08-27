@@ -7,7 +7,7 @@
                 <b>{{ username }}</b> 
             </div>
             <div class="image">
-                <img :src="apis.data.message[i]">
+                <img :src="apis[i]">
             </div>
             <div class="content">
                 <span class="right floated">
@@ -25,7 +25,7 @@
             </div>
         </div>
 
-        {{ apis.data.message }}
+        {{ fakeApi }}
     </div>
     
 </template>
@@ -39,13 +39,18 @@ export default {
         return {
             avatarImg: 'https://avatars0.githubusercontent.com/u/3336816?s=460&u=a3def04c56afd7220d835005dbf1879a0b497554&v=4',
             usernames: ['AdaBrain', 'Peter Parker', 'Steve Jobs', 'Bill Gates', 'Elon Musk'],
-            apis: null
+            apis: null,
+            fakeApi: null,
         }
     },
     mounted: function() {
         axios
         .get('https://dog.ceo/api/breed/pomeranian/images/random/10')
-        .then(response => this.apis = response)
+        .then(response => this.apis = response.data.message)
+
+        axios
+        .get('https://api.mocki.io/v1/9caa0ba8')
+        .then(response => this.fakeApi = response)
     }
 }
 </script>
