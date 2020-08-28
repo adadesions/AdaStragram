@@ -13,9 +13,7 @@ export default {
     name: 'GridImages',
     data: function() {
         return {
-            usernames: ['AdaBrain', 'Peter Parker', 'Steve Jobs', 'Bill Gates', 'Elon Musk'],
             apis: null,
-            fakeApi: null,
             info: [
                 {
                     username: 'AdaDeSions',
@@ -52,10 +50,6 @@ export default {
         axios
         .get('https://dog.ceo/api/breed/pomeranian/images/random/10')
         .then(response => this.apis = response.data.message)
-
-        axios
-        .get('https://api.mocki.io/v1/9caa0ba8')
-        .then(response => this.fakeApi = response)
     },
     components: {
         InstraCard,
