@@ -29,7 +29,10 @@
 
 <script>
 export default {
-
+    name: 'InstraCard',
+    props: {
+        info: Object,
+    }
 }
 </script>
 
