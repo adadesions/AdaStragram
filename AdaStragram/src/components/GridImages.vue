@@ -1,6 +1,11 @@
 <template>
     <div id="grid-images">
-        <InstraCard v-for="(data, idx) in info" :info="data" :key="data.username+idx"></InstraCard>
+        <InstraCard
+            v-for="(data, idx) in info"
+            :info="data"
+            :img="apis[idx]"
+            :key="data.username+idx">
+        </InstraCard>
     </div>
     
 </template>
